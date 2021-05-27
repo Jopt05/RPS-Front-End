@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/RPS-Front-End/static/css/main.884bb99e.chunk.css",
+    "main.js": "/RPS-Front-End/static/js/main.3d8e2d49.chunk.js",
+    "main.js.map": "/RPS-Front-End/static/js/main.3d8e2d49.chunk.js.map",
+    "runtime-main.js": "/RPS-Front-End/static/js/runtime-main.e6a5c6ea.js",
+    "runtime-main.js.map": "/RPS-Front-End/static/js/runtime-main.e6a5c6ea.js.map",
+    "static/js/2.930ea9f5.chunk.js": "/RPS-Front-End/static/js/2.930ea9f5.chunk.js",
+    "static/js/2.930ea9f5.chunk.js.map": "/RPS-Front-End/static/js/2.930ea9f5.chunk.js.map",
+    "index.html": "/RPS-Front-End/index.html",
+    "static/css/main.884bb99e.chunk.css.map": "/RPS-Front-End/static/css/main.884bb99e.chunk.css.map",
+    "static/js/2.930ea9f5.chunk.js.LICENSE.txt": "/RPS-Front-End/static/js/2.930ea9f5.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e6a5c6ea.js",
+    "static/js/2.930ea9f5.chunk.js",
+    "static/css/main.884bb99e.chunk.css",
+    "static/js/main.3d8e2d49.chunk.js"
+  ]
+}
