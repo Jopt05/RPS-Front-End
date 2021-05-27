@@ -39,8 +39,16 @@ const RegisterScreen = ({ history }) => {
             }),
         })
             .then( resp => resp.json() )
-            .then( data => setUserInfo({ ...UserInfo, msg: data.msg }) )
-            .catch( err => console.log(err) )
+            // .then( data => setUserInfo({ ...UserInfo, msg: data.msg }) )
+            // .catch( err => console.log(err) )
+
+        if( userData.errors ) {
+            setUserInfo({ 
+                ...UserInfo,
+                msg: userData.errors[0].msg
+            });
+            return;
+        }
 
         setTimeout(() => {
             history.goBack();
