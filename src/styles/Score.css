@@ -1,0 +1,106 @@
+@media only screen and ( min-width: 769px ) {
+    .Container {
+        width: 55%;
+        height: fit-content;
+        margin: auto;
+        padding: 15px 20px;
+        border-radius: 15px;
+        border: 2px solid whitesmoke;
+        animation-name: slideIn;
+        animation-duration: .5s;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;
+    }
+    
+    .Container__Div {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        gap: 10px;
+    }
+    
+    .Container__Row {
+        padding: 10px 20px;
+        display: flex;
+    }
+    
+    .Container__Row:first-child {
+        border-radius: 15px;
+        background-color: rgb(233, 231, 231);
+    }
+    
+    .Container__Row:first-child .Username,
+    .Container__Row:first-child .Score {
+        color: #161F4A;
+    }
+    
+    .Username {
+        font-size: 24px;
+        font-weight: 800;
+    }
+    
+    .Score {
+        font-weight: 800;
+        font-size: 24px;
+        margin-left: auto;
+    }
+}
+
+@media only screen and ( max-width: 768px ) {
+    .Container {
+        height: fit-content;
+        margin: 10px;
+        padding: 10px 15px;
+        border-radius: 15px;
+        border: 2px solid whitesmoke;
+        animation-name: slideIn;
+        animation-duration: .2s;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;
+    }
+    
+    .Container__Div {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        gap: 10px;
+    }
+    
+    .Container__Row {
+        padding: 10px 20px;
+        display: flex;
+    }
+    
+    .Container__Row:first-child {
+        border-radius: 15px;
+        background-color: rgb(233, 231, 231);
+    }
+    
+    .Container__Row:first-child .Username,
+    .Container__Row:first-child .Score {
+        color: #161F4A;
+    }
+    
+    .Username {
+        font-size: 16px;
+        font-weight: 800;
+    }
+    
+    .Score {
+        font-weight: 800;
+        font-size: 16px;
+        margin-left: auto;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}

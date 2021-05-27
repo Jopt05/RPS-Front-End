@@ -1,0 +1,156 @@
+@media only screen and ( min-width: 769px ) {
+    .Game {
+        padding: 20px 15px;
+        display: flex;
+    }
+    
+    .Game__Header {
+        border-radius: 25px;
+        border: 2px solid whitesmoke;
+        margin: auto;
+        width: 60%;
+        height: max-content;
+    }
+    
+    .Game__Header-Container {
+        padding: 15px 20px;
+        display: flex;
+        height: 100px;
+    }
+    
+    .Game__Header-Container-TitleC-Title {
+        color: whitesmoke;
+        font-weight: 800;
+        height: 100%;
+        font-size: 25px;
+    }
+    
+    .Game__Header-Container-ScoreC {
+        margin-left: auto;
+        background-color: whitesmoke;
+        border-radius: 15px;
+        padding: 15px 20px;
+    }
+    
+    .Game__Header-Container-ScoreCC {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .Game__Header-Container-ScoreCC-Score {
+        font-size: 14px;
+        text-align: center;
+        font-weight: 800;
+        color: #161F4A;
+    }
+    
+    .Game__Header-Container-ScoreCC-ScoreP {
+        color: #161F4A;
+        font-weight: 800;
+        font-size: 37px;
+        text-align: center;
+    }
+    
+    .GameNav {
+        display: flex;
+        width: max-content;
+        gap: 10px;
+        align-self: center;
+        margin-left: auto;
+    }
+    
+    .GameNav__Link {
+        text-decoration: none;
+        font-size: 24px;
+        color: whitesmoke;
+        transition: color .2s ease-in-out;
+    }
+    
+    .GameNav__Link:hover {
+        color: rgba(245, 245, 245, 0.713);
+    }
+    
+    .GameNav__Link-A {
+        color: rgb(169, 167, 167);
+    }
+}
+
+@media only screen and ( max-width: 768px ) {
+    .Game {
+        padding: 20px 15px;
+        display: flex;
+    }
+    
+    .Game__Header {
+        border-radius: 25px;
+        border: 2px solid whitesmoke;
+        margin: auto;
+        width: 100%;
+        height: fit-content;
+    }
+    
+    .Game__Header-Container {
+        padding: 10px 15px;
+        display: flex;
+        height: 100px;
+    }
+    
+    .Game__Header-Container-TitleC-Title {
+        color: whitesmoke;
+        font-weight: 800;
+        font-size: 25px;
+    }
+    
+    .Game__Header-Container-ScoreC {
+        margin-left: auto;
+        background-color: whitesmoke;
+        border-radius: 15px;
+        padding: 15px 20px;
+    }
+    
+    .Game__Header-Container-ScoreCC {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .Game__Header-Container-ScoreCC-Score {
+        font-size: 14px;
+        text-align: center;
+        font-weight: 800;
+        color: #161F4A;
+    }
+    
+    .Game__Header-Container-ScoreCC-ScoreP {
+        color: #161F4A;
+        font-weight: 800;
+        font-size: 37px;
+        text-align: center;
+    }
+    
+    .GameNav {
+        display: flex;
+        width: max-content;
+        gap: 10px;
+        align-self: center;
+        margin-left: auto;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .GameNav__Link {
+        text-decoration: none;
+        font-size: 16px;
+        color: whitesmoke;
+        transition: color .2s ease-in-out;
+    }
+    
+    .GameNav__Link:hover {
+        color: rgba(245, 245, 245, 0.713);
+    }
+    
+    .GameNav__Link-A {
+        color: rgb(169, 167, 167);
+    }
+}

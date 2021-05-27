@@ -1,0 +1,226 @@
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+}
+
+@media only screen and ( min-width: 769px ) {
+    .MainBody {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    
+    .MainBody__Container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    
+    .MainBody__Container-Form {
+        display: flex;
+        width: 350px;
+        padding: 20px;
+        background-color: hsl(214, 47%, 23%);
+        border-radius: 25px;
+        flex-direction: column;
+        box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+        animation-name: fadeIn;
+        animation-timing-function: ease-in-out;
+        animation-duration: .3s;
+    }
+    
+    .MainBody__Container-Form-Title {
+        color: whitesmoke;
+        text-align: center;
+        margin-bottom: 25px;
+        font-weight: 800;
+        font-size: 30px;
+    }
+    
+    .MainBody__Container-Form-Label {
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+    
+    .MainBody__Container-Form-Input {
+        border-radius: 15px;
+        padding: 10px 15px;
+        background-color: #161F4A;
+        margin-bottom: 25px;
+        border: none;
+        color: whitesmoke;
+        border: 1px solid transparent;
+        transition: all .2s ease-in-out;
+    }
+    
+    .MainBody__Container-Form-Input:focus {
+        outline: none;
+        border-color: #273680;
+        background-color: #1f2c69;
+    }
+    
+    .MainBody__Container-Form-Message {
+        font-weight: 800;
+        color: rgb(208, 203, 203);
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    .MainBody__Container-Form-Message-Error {
+        color: rgb(243, 69, 69);
+        text-align: center;
+        margin-bottom: 15px;
+        font-weight: 800;
+    }
+    
+    .MainBody__Container-Form-Button {
+        padding: 15px 10px;
+        background-color: #161F4A;
+        border-radius: 15px;
+        color: whitesmoke;
+        border: none;
+        margin-bottom: 15px;
+        transition: all .2s ease-in-out;
+    }
+    
+    .MainBody__Container-Form-Button:hover {
+        cursor: pointer;
+        background-color: #1f2c69;
+        color: rgb(216, 213, 213);
+    }
+    
+    .MainBody__LinksDiv {
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    .MainBody__LinksDiv-Link {
+        text-decoration: none;
+        color: whitesmoke;
+        font-size: 12px;
+    }
+    
+    .MainBody__LinksDiv-Link:hover {
+        text-decoration: underline;
+    }
+}
+
+@media only screen and ( max-width: 768px ) {
+    .MainBody {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    
+    .MainBody__Container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    
+    .MainBody__Container-Form {
+        display: flex;
+        width: 80vw;
+        padding: 20px;
+        background-color: hsl(214, 47%, 23%);
+        border-radius: 25px;
+        flex-direction: column;
+        box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+        animation-name: fadeIn;
+        animation-timing-function: ease-in-out;
+        animation-duration: .3s;
+    }
+    
+    .MainBody__Container-Form-Title {
+        color: whitesmoke;
+        text-align: center;
+        margin-bottom: 25px;
+        font-weight: 800;
+        font-size: 30px;
+    }
+    
+    .MainBody__Container-Form-Label {
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+    
+    .MainBody__Container-Form-Input {
+        border-radius: 15px;
+        padding: 10px 15px;
+        background-color: #161F4A;
+        margin-bottom: 25px;
+        border: none;
+        color: whitesmoke;
+        border: 1px solid transparent;
+        transition: all .2s ease-in-out;
+    }
+    
+    .MainBody__Container-Form-Input:focus {
+        outline: none;
+        border-color: #273680;
+        background-color: #1f2c69;
+    }
+    
+    .MainBody__Container-Form-Message {
+        font-weight: 800;
+        color: rgb(208, 203, 203);
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    .MainBody__Container-Form-Message-Error {
+        color: rgb(243, 69, 69);
+        text-align: center;
+        margin-bottom: 15px;
+        font-weight: 800;
+    }
+    
+    .MainBody__Container-Form-Button {
+        padding: 15px 10px;
+        background-color: #161F4A;
+        border-radius: 15px;
+        color: whitesmoke;
+        border: none;
+        margin-bottom: 15px;
+        transition: all .2s ease-in-out;
+    }
+    
+    .MainBody__Container-Form-Button:hover {
+        cursor: pointer;
+        background-color: #1f2c69;
+        color: rgb(216, 213, 213);
+    }
+    
+    .MainBody__LinksDiv {
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    .MainBody__LinksDiv-Link {
+        text-decoration: none;
+        color: whitesmoke;
+        font-size: 12px;
+    }
+    
+    .MainBody__LinksDiv-Link:hover {
+        text-decoration: underline;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
