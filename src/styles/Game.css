@@ -1,0 +1,200 @@
+@media only screen and ( min-width: 769px ) {
+    .RPSContainer {
+        width: 45%;
+        height: 350px;
+        margin: 70px auto;
+        border-radius: 15px;
+        position: relative;
+        box-sizing: content-box;
+    }
+    
+    .RPSContainer__Bg {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        object-fit: fill;
+        top: 0;
+        left: 0;
+    }
+    
+    .ItemContainer {
+        width: 150px;
+        height: 150px;
+        border-radius: 100%;
+    }
+    
+    .ItemContainer:nth-child(2) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        background-color: darkblue;
+    }
+    
+    .ItemContainer:nth-child(2) .ItemBorder {
+        background-color: blue;
+    }
+    
+    .ItemContainer:nth-child(3) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(50%, -50%);
+        background-color: darkred;
+    }
+    
+    .ItemContainer:nth-child(3) .ItemBorder {
+        background-color: red;
+    }
+    
+    .ItemContainer:last-child {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: darkgoldenrod;
+    }
+    
+    .ItemContainer:last-child .ItemBorder {
+        background-color: yellow;
+    }
+    
+    .ItemBorder {
+        width: 100%;
+        height: 95%;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .ItemInnerShadow {
+        width: 80%;
+        height: 80%;
+        background-color: grey;
+        border-radius: 100%;
+        margin: auto auto;
+        display: flex;
+        align-items: flex-end;
+    }
+    
+    .ItemInnerContainer {
+        background-color: white;
+        width: 100%;
+        height: 97%;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .Item-Svg {
+        width: 50%;
+        height: 60%;
+        transform: rotate(30deg);
+        transition: all .2s ease-in-out;
+    }
+
+    .ItemContainer:hover .Item-Svg{
+        transform: rotate(45deg);
+    }
+}
+
+@media only screen and ( max-width: 768px ) {
+
+    .RPSContainer {
+        width: 60%;
+        height: 250px;
+        margin: 70px auto;
+        border-radius: 15px;
+        position: relative;
+        box-sizing: content-box;
+    }
+    
+    .RPSContainer__Bg {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        object-fit: fill;
+        top: 0;
+        left: 0;
+    }
+    
+    .ItemContainer {
+        width: 120px;
+        height: 120px;
+        border-radius: 100%;
+    }
+    
+    .ItemContainer:nth-child(2) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        background-color: darkblue;
+    }
+    
+    .ItemContainer:nth-child(2) .ItemBorder {
+        background-color: blue;
+    }
+    
+    .ItemContainer:nth-child(3) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(50%, -50%);
+        background-color: darkred;
+    }
+    
+    .ItemContainer:nth-child(3) .ItemBorder {
+        background-color: red;
+    }
+    
+    .ItemContainer:last-child {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: darkgoldenrod;
+    }
+    
+    .ItemContainer:last-child .ItemBorder {
+        background-color: yellow;
+    }
+    
+    .ItemBorder {
+        width: 100%;
+        height: 95%;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .ItemInnerShadow {
+        width: 80%;
+        height: 80%;
+        background-color: grey;
+        border-radius: 100%;
+        margin: auto auto;
+        display: flex;
+        align-items: flex-end;
+    }
+    
+    .ItemInnerContainer {
+        background-color: white;
+        width: 100%;
+        height: 97%;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .Item-Svg {
+        width: 50%;
+        height: 60%;
+        transform: rotate(30deg);
+    }
+
+}
