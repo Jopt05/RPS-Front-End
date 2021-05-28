@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { UserContext } from '../App'
 import '../styles/NavBar.css'
 
 const NavBar = () => {
+
+    const { UserInfo, setUserInfo } = useContext( UserContext )
+
     return (
         <>
             <div className="Game">
@@ -25,7 +29,9 @@ const NavBar = () => {
                                     SCORE
                                 </span>
                                 <span className="Game__Header-Container-ScoreCC-ScoreP">
-                                    0
+                                    {
+                                        UserInfo?.user?.score
+                                    }
                                 </span>
                             </div>
                         </div>

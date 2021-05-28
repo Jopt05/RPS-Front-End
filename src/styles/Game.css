@@ -1,4 +1,5 @@
 @media only screen and ( min-width: 769px ) {
+
     .RPSContainer {
         width: 45%;
         height: 350px;
@@ -6,6 +7,9 @@
         border-radius: 15px;
         position: relative;
         box-sizing: content-box;
+        animation-name: fadeIn;
+        animation-timing-function: ease-in-out;
+        animation-duration: .2s;
     }
     
     .RPSContainer__Bg {
@@ -24,7 +28,7 @@
         cursor: pointer;
     }
     
-    .ItemContainer:nth-child(2) {
+    .Rock {
         position: absolute;
         top: 0;
         left: 0;
@@ -32,11 +36,11 @@
         background-color: darkblue;
     }
     
-    .ItemContainer:nth-child(2) .ItemBorder {
+    .Rock .ItemBorder {
         background-color: blue;
     }
     
-    .ItemContainer:nth-child(3) {
+    .Paper {
         position: absolute;
         top: 0;
         right: 0;
@@ -44,11 +48,11 @@
         background-color: darkred;
     }
     
-    .ItemContainer:nth-child(3) .ItemBorder {
+    .Paper .ItemBorder {
         background-color: red;
     }
     
-    .ItemContainer:last-child {
+    .Scissors {
         position: absolute;
         bottom: 0;
         left: 50%;
@@ -56,7 +60,7 @@
         background-color: darkgoldenrod;
     }
     
-    .ItemContainer:last-child .ItemBorder {
+    .Scissors .ItemBorder {
         background-color: yellow;
     }
     
@@ -99,6 +103,65 @@
     .ItemContainer:hover .Item-Svg{
         transform: rotate(45deg);
     }
+
+    .GameContainer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        gap: 10px;
+    }
+
+    .Option {
+        height: 100%;
+        flex-grow: 1;
+    }
+
+    .OptionTitle {
+        font-weight: 800;
+        text-align: center;
+    }
+    
+    .ItemContainerG {
+        width: 150px;
+        height: 150px;
+        border-radius: 100%;
+        display: block;
+        transform: translateY(50%);
+        margin: auto;
+    }
+
+    .Option .Rock,
+    .Option .Paper,
+    .Option .Scissors {
+        position: static;
+    }
+
+    .Versus {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .ButtonAgain {
+        padding: 15px 10px;
+        font-weight: 800;
+        color: #161F4A;
+        border-radius: 15px;
+        background-color: whitesmoke;
+        border: none;
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+    }
+
+    .ButtonAgain:hover {
+        background-color: rgb(221, 221, 221);
+    }
+
+    .Hide {
+        display: none;
+    }
 }
 
 @media only screen and ( max-width: 768px ) {
@@ -110,6 +173,9 @@
         border-radius: 15px;
         position: relative;
         box-sizing: content-box;
+        animation-name: fadeIn;
+        animation-timing-function: ease-in-out;
+        animation-duration: .2s;
     }
     
     .RPSContainer__Bg {
@@ -127,7 +193,7 @@
         border-radius: 100%;
     }
     
-    .ItemContainer:nth-child(2) {
+    .Rock {
         position: absolute;
         top: 0;
         left: 0;
@@ -135,11 +201,11 @@
         background-color: darkblue;
     }
     
-    .ItemContainer:nth-child(2) .ItemBorder {
+    .Rock .ItemBorder {
         background-color: blue;
     }
     
-    .ItemContainer:nth-child(3) {
+    .Paper {
         position: absolute;
         top: 0;
         right: 0;
@@ -147,11 +213,11 @@
         background-color: darkred;
     }
     
-    .ItemContainer:nth-child(3) .ItemBorder {
+    .Paper .ItemBorder {
         background-color: red;
     }
     
-    .ItemContainer:last-child {
+    .Scissors {
         position: absolute;
         bottom: 0;
         left: 50%;
@@ -159,7 +225,7 @@
         background-color: darkgoldenrod;
     }
     
-    .ItemContainer:last-child .ItemBorder {
+    .Scissors .ItemBorder {
         background-color: yellow;
     }
     
@@ -198,4 +264,114 @@
         transform: rotate(30deg);
     }
 
+    .GameContainer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        gap: 10px;
+    }
+
+    .Option {
+        height: 100%;
+        flex-grow: 1;
+    }
+
+    .OptionTitle {
+        font-weight: 800;
+        text-align: center;
+    }
+    
+    .ItemContainerG {
+        width: 120px;
+        height: 120px;
+        border-radius: 100%;
+        display: block;
+        transform: translateY(50%);
+        margin: auto;
+    }
+
+    .Option .Rock,
+    .Option .Paper,
+    .Option .Scissors {
+        position: static;
+    }
+    
+    .ItemBorder {
+        width: 100%;
+        height: 95%;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .ItemInnerShadow {
+        width: 80%;
+        height: 80%;
+        background-color: grey;
+        border-radius: 100%;
+        margin: auto auto;
+        display: flex;
+        align-items: flex-end;
+    }
+    
+    .ItemInnerContainer {
+        background-color: white;
+        width: 100%;
+        height: 97%;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .Versus {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: center;
+        gap: 20px;
+        top: 100%;
+        width: 100%;
+        left: 0;
+    }
+
+    .ButtonAgain {
+        padding: 15px 10px;
+        font-weight: 800;
+        color: #161F4A;
+        border-radius: 15px;
+        background-color: whitesmoke;
+        border: none;
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+    }
+
+    .ButtonAgain:hover {
+        background-color: rgb(221, 221, 221);
+    }
+
+    .Full {
+        width: 80%;
+    }
+
+    .Hide {
+        display: none;
+    }
+
+}
+
+.NoShow {
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }

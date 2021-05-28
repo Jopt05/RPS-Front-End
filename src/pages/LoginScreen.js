@@ -44,6 +44,7 @@ const LoginScreen = ({ history }) => {
                 msg: userData.msg,
                 hasError: true,
             })
+            setisLoading(false);
             return;
         }
 
