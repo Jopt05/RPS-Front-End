@@ -93,7 +93,7 @@ const RegisterScreen = ({ history }) => {
                         {
                             isLoading
                                 ? <img className="LoadingSvg" src={ Loading } alt="Loading" />
-                                : 'Login'
+                                : 'Register'
                         }
                     </button>
                     <nav className="MainBody__LinksDiv">
