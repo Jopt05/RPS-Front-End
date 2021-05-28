@@ -110,6 +110,11 @@ body {
     .MainBody__LinksDiv-Link:hover {
         text-decoration: underline;
     }
+
+    .LoadingSvg {
+        width: 16px;
+        transform: scale(2);
+    }
 }
 
 @media only screen and ( max-width: 768px ) {
@@ -212,6 +217,11 @@ body {
     
     .MainBody__LinksDiv-Link:hover {
         text-decoration: underline;
+    }
+
+    .LoadingSvg {
+        width: 16px;
+        transform: scale(2);
     }
 }
 

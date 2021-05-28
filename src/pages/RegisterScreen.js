@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import '../styles/login.css'
 import { Link, NavLink, Redirect } from 'react-router-dom'
+import Loading from '../assets/Loading.svg';
 
 const RegisterScreen = ({ history }) => {
 
@@ -12,6 +13,8 @@ const RegisterScreen = ({ history }) => {
         hasError: false,
     })
 
+    const [isLoading, setisLoading] = useState(false);
+
     const handleChange = (e) => {
         setForm({
             ...Form,
@@ -21,6 +24,8 @@ const RegisterScreen = ({ history }) => {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
+
+        setisLoading(true);
         
         if( !Form.User || !Form.Password ) {
             setUserInfo({ ...UserInfo, msg: 'You cannot leave fields empty' });
@@ -51,6 +56,7 @@ const RegisterScreen = ({ history }) => {
         }
 
         setTimeout(() => {
+            setisLoading(false);
             history.goBack();
         }, 1000);
 
@@ -84,7 +90,11 @@ const RegisterScreen = ({ history }) => {
                         { UserInfo.msg }
                     </p>
                     <button className="MainBody__Container-Form-Button">
-                        Register
+                        {
+                            isLoading
+                                ? <img className="LoadingSvg" src={ Loading } alt="Loading" />
+                                : 'Login'
+                        }
                     </button>
                     <nav className="MainBody__LinksDiv">
                         <NavLink exact className="MainBody__LinksDiv-Link" to="/login">You have an account? Login here!</NavLink>

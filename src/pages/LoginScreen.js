@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import '../styles/login.css'
 import { Link, NavLink, Redirect } from 'react-router-dom'
 import { UserContext } from '../App'
+import Loading from '../assets/Loading.svg';
 
 const LoginScreen = ({ history }) => {
 
@@ -11,10 +12,13 @@ const LoginScreen = ({ history }) => {
     const [Error, setError] = useState({
         msg: '',
         hasError: false,
-    })
+    });
+    const [isLoading, setisLoading] = useState(false);
 
     const handleSubmit = async(e) => {
         e.preventDefault();
+
+        setisLoading(true);
         
         if( !Form.User || !Form.Password ) {
             setUserInfo({ ...UserInfo, msg: 'You cannot leave fields empty' });
@@ -54,6 +58,8 @@ const LoginScreen = ({ history }) => {
             tokenId: userData?.tokenId, 
             user: userData?.usuario
         }) 
+
+        setisLoading(false);
 
         history.replace('/game');
 
@@ -98,7 +104,11 @@ const LoginScreen = ({ history }) => {
                         { Error?.msg }
                     </p>
                     <button className="MainBody__Container-Form-Button">
-                        Login
+                        {
+                            isLoading
+                                ? <img className="LoadingSvg" src={ Loading } alt="Loading" />
+                                : 'Login'
+                        }
                     </button>
                     <nav className="MainBody__LinksDiv">
                         <NavLink exact className="MainBody__LinksDiv-Link" to="/register">You don't have an account? Register here!</NavLink>
