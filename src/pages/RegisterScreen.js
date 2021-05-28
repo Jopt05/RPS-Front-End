@@ -55,6 +55,11 @@ const RegisterScreen = ({ history }) => {
             return;
         }
 
+        setUserInfo({ 
+            ...UserInfo,
+            msg: userData?.msg
+        });
+
         setTimeout(() => {
             setisLoading(false);
             history.goBack();
