@@ -70,7 +70,7 @@ const GameScreen = () => {
 
         election = election.getAttribute('name');
         
-        aiElection = Math.floor(Math.random() * (2 - 0)) + 0;
+        aiElection = Math.floor(Math.random() * (3 - 0)) + 0;
 
         aiElection = getItem( aiElection );
 
