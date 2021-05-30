@@ -124,12 +124,6 @@ const GameScreen = ({ history }) => {
         .catch( data => console.log("Error en la peticion"))
     }, [UserInfo?.user?.score])
 
-    useEffect(() => {
-        if( !UserInfo.user.score ) {
-            history.replace('/');
-        }
-    }, []);
-
     return (
         <>
             <NavBar />
