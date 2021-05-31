@@ -8,7 +8,8 @@ function App() {
 
   const [UserInfo, setUserInfo] = useState({
     tokenId: '',
-    user: {}
+    user: {},
+    isLogged: false
   })
 
   return (

@@ -57,7 +57,8 @@ const LoginScreen = ({ history }) => {
         setUserInfo({ 
             ...UserInfo, 
             tokenId: userData?.tokenId, 
-            user: userData?.usuario
+            user: userData?.usuario,
+            isLogged: true,
         }) 
 
         setisLoading(false);
