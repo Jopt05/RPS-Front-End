@@ -42,27 +42,21 @@ const GameScreen = ({ history }) => {
     ];
 
     const winner = (player, pc) => {
+        let isWinner = '';
 
         if( player === pc ){
-            setWin( 'SAME' )
+            isWinner = 'SAME'
         } else if ( (player === 0 && pc === 2) || (player === 2 && pc === 1) || (player === 1 && pc === 0) ) {
-
-            setWin( 'YOU WIN' )
-
-            setTimeout(() => {
-                setUserInfo({
-                    ...UserInfo,
-                    user: {
-                        ...user,
-                        score: score + 1
-                    }
-                })
-            }, 1000);
-
+            isWinner = 'YOU WIN'
         } else {
-            setWin( 'YOU LOSE' )
+            isWinner = 'YOU LOSE' 
         }
-    
+
+        setWin(isWinner)
+
+        setTimeout(() => {
+            setPlayAgain( true );
+        }, 500);
     }    
 
     const startGame = ( e ) => {
@@ -98,10 +92,6 @@ const GameScreen = ({ history }) => {
         });
 
         winner(election, aiElection);
-
-        setTimeout(() => {
-            setPlayAgain( true );
-        }, 1000);
     }
 
     const handlePlayAgain = () => {
@@ -110,6 +100,8 @@ const GameScreen = ({ history }) => {
     }
 
     useEffect(() => {
+        if (Win != 'YOU WIN') return;
+
         fetch(`https://rpsbackendjopt.herokuapp.com/api/usuarios/${ user.uid }`, {
             method: 'PUT',
             headers: {
@@ -117,12 +109,22 @@ const GameScreen = ({ history }) => {
                 'x-token' : UserInfo?.tokenId
             },
             body: JSON.stringify({
-                score: UserInfo?.user?.score
+                score: UserInfo.user.score + 1
             }),
         })
         .then( data => data.json() )
         .catch( data => console.log("Error en la peticion"))
-    }, [UserInfo?.user?.score])
+        
+        setTimeout(() => {
+            setUserInfo({
+                ...UserInfo,
+                user: {
+                    ...user,
+                    score: score + 1
+                }
+            })
+        }, 1500);
+    }, [Win])
 
     return (
         <>
@@ -178,9 +180,13 @@ const GameScreen = ({ history }) => {
                                     Win
                                 }
                             </p>
-                            <button className="ButtonAgain" onClick={ handlePlayAgain }>
-                                PLAY AGAIN
-                            </button>
+                            {
+                                Win != 'YOU WIN' && (
+                                    <button className="ButtonAgain" onClick={ handlePlayAgain }>
+                                        PLAY AGAIN
+                                    </button>
+                                )
+                            }
                         </div>
                     </div>
                     <div className="Option">
