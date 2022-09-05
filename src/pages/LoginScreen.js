@@ -25,7 +25,7 @@ const LoginScreen = ({ history }) => {
             return;
         }
 
-        const userData = await fetch('https://rpsbackendjopt.herokuapp.com/api/login', {
+        const userData = await fetch('https://rpsbackend-production.up.railway.app/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

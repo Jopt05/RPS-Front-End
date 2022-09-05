@@ -32,7 +32,7 @@ const RegisterScreen = ({ history }) => {
             return;
         }
 
-        const userData = await fetch('https://rpsbackendjopt.herokuapp.com/api/usuarios', {
+        const userData = await fetch('https://rpsbackend-production.up.railway.app/api/usuarios', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
