@@ -8,7 +8,7 @@ const Scoreboard = () => {
     useEffect(() => {
 
         const fetchScores = async() => {
-            const data = await fetch('https://rpsbackendjopt.herokuapp.com/api/usuarios', {
+            const data = await fetch(`${process.env.REACT_APP_API_URL}/api/usuarios`, {
                 method: 'GET'
             })
             .then( data => data.json() )

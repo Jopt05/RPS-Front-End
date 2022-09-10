@@ -102,7 +102,7 @@ const GameScreen = ({ history }) => {
     useEffect(() => {
         if (Win != 'YOU WIN') return;
 
-        fetch(`https://rpsbackend-production.up.railway.app/api/usuarios/${ user.uid }`, {
+        fetch(`${process.env.REACT_APP_API_URL}/api/usuarios/${ user.uid }`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

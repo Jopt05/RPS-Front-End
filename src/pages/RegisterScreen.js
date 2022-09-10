@@ -32,7 +32,7 @@ const RegisterScreen = ({ history }) => {
             return;
         }
 
-        const userData = await fetch('https://rpsbackend-production.up.railway.app/api/usuarios', {
+        const userData = await fetch(`${process.env.REACT_APP_API_URL}/api/usuarios`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

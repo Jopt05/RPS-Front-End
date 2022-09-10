@@ -25,7 +25,9 @@ const LoginScreen = ({ history }) => {
             return;
         }
 
-        const userData = await fetch('https://rpsbackend-production.up.railway.app/api/login', {
+        console.log(process.env.REACT_APP_API_URL)
+
+        const userData = await fetch(`${process.env.REACT_APP_API_URL}/api/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
