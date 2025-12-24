@@ -9,11 +9,7 @@ const useFetch = ( baseUrl = "" ) => {
     });
 
     const handlePost = async (data = {}, endpoint = "") => {
-        setFetchState({
-            data: null,
-            loading: true,
-            error: null,
-        });
+        setFetchState(s => ({ ...s, loading: true }));
         try {
             const response = await fetch(`${baseUrl}${endpoint}`, {
                 method: 'POST',
@@ -26,26 +22,14 @@ const useFetch = ( baseUrl = "" ) => {
             const result = await response.json();
 
             if( !response.ok ) {
-                setFetchState({
-                    data: null,
-                    loading: false,
-                    error: result,
-                });
+                setFetchState(s => ({ ...s, loading: false, error: result }));
                 return;                
             }
 
-            setFetchState({
-                data: result,
-                loading: false,
-                error: null,
-            });
+            setFetchState(s => ({ ...s, loading: false, data: result }));
 
         } catch (error) {
-            setFetchState({
-                data: null,
-                loading: false,
-                error: error,
-            });
+            setFetchState(s => ({ ...s, loading: false, error: error }));
         }
     }
     
