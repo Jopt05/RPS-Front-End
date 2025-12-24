@@ -7,13 +7,6 @@ import paper from '../assets/icon-paper.svg'
 import scissors from '../assets/icon-scissors.svg'
 import { UserContext } from '../App'
 import { getItem } from '../helpers/getItem'
-// import {
-//     // BrowserRouter as Router,
-//     HashRouter as Router,
-//     Switch,
-//     Route,
-//     Redirect
-// } from 'react-router-dom';
 
 const GameScreen = () => {
 

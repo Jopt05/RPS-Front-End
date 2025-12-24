@@ -39,12 +39,12 @@ const LoginScreen = () => {
             return;
         }
 
-        setUserInfo({ 
-            ...UserInfo, 
-            tokenId: fetchState.data?.tokenId, 
+        setUserInfo(x => ({
+            ...x,
+            tokenId: fetchState.data?.tokenId,
             user: fetchState.data?.usuario,
             isLogged: true,
-        }) 
+        }))
 
         navigate('/game', { replace: true });
     }
