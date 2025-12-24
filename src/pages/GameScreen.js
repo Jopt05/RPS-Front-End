@@ -115,7 +115,7 @@ const GameScreen = () => {
                     </div>
                     <div className="Option">
                         <p className="OptionTitle">
-                            THE HOUSE PICKED
+                            HOUSE PICKED
                         </p>
                         <div className={ `ItemContainerG ${ indexMap[gameState.aiElectionIndex] }` }>
                             <div className="ItemBorder">
