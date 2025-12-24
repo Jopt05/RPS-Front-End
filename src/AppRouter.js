@@ -2,9 +2,9 @@ import React, { createContext, useContext } from 'react';
 import {
     // BrowserRouter as Router,
     HashRouter as Router,
-    Switch,
+    Routes,
     Route,
-    Redirect
+    Navigate
 } from 'react-router-dom';
 import { UserContext } from './App';
 import GameScreen from './pages/GameScreen';
@@ -20,13 +20,21 @@ export const AppRouter = () => {
     return (
         <Router>
             <div className="App">
-                <Switch>
-                    <Route exact path="/login" component={ LoginScreen } />
-                    <Route exact path="/register" component={ RegisterScreen } />
-                    <PrivateRoute isAuthenticated={ UserInfo.isLogged } exact path="/game" component={ GameScreen } />
-                    <PrivateRoute isAuthenticated={ UserInfo.isLogged } exact path="/score" component={ ScoreScreen } />
-                    <Redirect to="/login" />
-                </Switch>
+                <Routes>
+                    <Route exact path="/login" element={ <LoginScreen /> } />
+                    <Route exact path="/register" element={ <RegisterScreen /> } />
+                    <Route exact path="/game" element={ 
+                        <PrivateRoute isAuthenticated={ UserInfo.isLogged }>
+                            <GameScreen />
+                        </PrivateRoute>
+                    } />
+                    <Route exact path="/score" element={ 
+                        <PrivateRoute isAuthenticated={ UserInfo.isLogged }>
+                            <ScoreScreen />
+                        </PrivateRoute>
+                    } />
+                    <Route path="*" element={ <Navigate to="/login" replace /> } />
+                </Routes>
             </div>
         </Router>
     )

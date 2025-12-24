@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import '../styles/login.css'
-import { Link, NavLink, Redirect } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { UserContext } from '../App'
 import Loading from '../assets/Loading.svg';
 
-const LoginScreen = ({ history }) => {
+const LoginScreen = () => {
 
     const { UserInfo, setUserInfo } = useContext( UserContext )
+    const navigate = useNavigate();
 
     const [Form, setForm] = useState({})
     const [Error, setError] = useState({
@@ -65,7 +66,7 @@ const LoginScreen = ({ history }) => {
 
         setisLoading(false);
 
-        history.replace('/game');
+        navigate('/game', { replace: true });
 
     }
 

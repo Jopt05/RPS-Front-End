@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import '../styles/login.css'
-import { Link, NavLink, Redirect } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import Loading from '../assets/Loading.svg';
 
-const RegisterScreen = ({ history }) => {
+const RegisterScreen = () => {
 
     const [Form, setForm] = useState({})
+    
+    const navigate = useNavigate();
 
     const [UserInfo, setUserInfo] = useState({
         msg: '',
@@ -62,7 +64,7 @@ const RegisterScreen = ({ history }) => {
 
         setTimeout(() => {
             setisLoading(false);
-            history.goBack();
+            navigate(-1);
         }, 1000);
 
     }
