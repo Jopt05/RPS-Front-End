@@ -14,7 +14,12 @@ const LoginScreen = () => {
         msg: '',
         hasError: false,
     });
+    const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setisLoading] = useState(false);
+
+    const handleShowPassword = () => {
+        setShowPassword(!showPassword);
+    }
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -99,12 +104,19 @@ const LoginScreen = () => {
                     <label className="MainBody__Container-Form-Label">
                         Password:
                     </label>
-                    <input 
-                        name="Password" 
-                        type="password"
-                        className="MainBody__Container-Form-Input"
-                        onChange={ handleChange }
-                    />
+                    <div
+                        className="InputContainer"
+                    >
+                        <input 
+                            name="Password" 
+                            type={ showPassword ? 'text' : 'password' }
+                            onChange={ handleChange }
+                        />
+                        <i 
+                            className='bx bx-eye'
+                            onClick={ handleShowPassword }
+                        ></i>
+                    </div>
                     <p className={ `MainBody__Container-Form-Message${ Error.hasError ? '-Error' : '' }` }>
                         { Error?.msg }
                     </p>

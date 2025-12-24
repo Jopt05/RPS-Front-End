@@ -48,6 +48,31 @@ body {
         margin-bottom: 15px;
         font-weight: 600;
     }
+
+    .InputContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #161F4A;
+        padding: 10px 15px;
+    }
+
+    .InputContainer i {
+        color: whitesmoke;
+    }
+
+    .InputContainer i:hover {
+        cursor: pointer;
+    }
+
+    .InputContainer input {
+        border: none;
+        color: whitesmoke;
+        transition: all .2s ease-in-out;
+        background-color: transparent;
+        outline: none;
+        width: 100%;
+    }
     
     .MainBody__Container-Form-Input {
         padding: 10px 15px;
