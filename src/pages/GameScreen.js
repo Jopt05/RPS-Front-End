@@ -6,125 +6,58 @@ import rock from '../assets/icon-rock.svg'
 import paper from '../assets/icon-paper.svg'
 import scissors from '../assets/icon-scissors.svg'
 import { UserContext } from '../App'
-import { getItem } from '../helpers/getItem'
+import useGame from '../hooks/useGame.hook'
+import useFetch from '../hooks/useFetch.hook'
+
+const indexMap = {
+    0: 'Rock',
+    1: 'Paper',
+    2: 'Scissors'
+}
 
 const GameScreen = () => {
 
     const { UserInfo, setUserInfo } = useContext( UserContext );
+    const { gameState, handlePlayAgain, handleStart } = useGame();
 
-    const { user } = UserInfo;
+    const { handlePut } = useFetch(process.env.REACT_APP_API_URL);
 
-    const { score } = user;
+    const updateUserScore = async () => {
+        const userResponse = await handlePut(
+            {
+                score: UserInfo.user.score + 1
+            }, 
+            `/api/usuarios/${ UserInfo.user.uid }`, 
+            {
+                'x-token' : UserInfo?.tokenId
+            }
+        );
 
-    const [IsPlaying, setIsPlaying] = useState(false);
-    const [PlayAgain, setPlayAgain] = useState(false);
-    const [Election, setElection] = useState({
-        userElection: null,
-        aiElection: null,
-    });
-    const [Win, setWin] = useState('');
-    const [Item, setItem] = useState({
-        userItem: null,
-        aiItem: null
-    })
-
-    const itemsSVG = [
-        rock,
-        paper,
-        scissors
-    ];
-
-    const winner = (player, pc) => {
-        let isWinner = '';
-
-        if( player === pc ){
-            isWinner = 'SAME'
-        } else if ( (player === 0 && pc === 2) || (player === 2 && pc === 1) || (player === 1 && pc === 0) ) {
-            isWinner = 'YOU WIN'
-        } else {
-            isWinner = 'YOU LOSE' 
+        if( !userResponse ) {
+            return;
         }
 
-        setWin(isWinner)
-
-        setTimeout(() => {
-            setPlayAgain( true );
-        }, 500);
-    }    
-
-    const startGame = ( e ) => {
-        setIsPlaying( true );
-
-        let election = e.target,
-            aiElection;
-
-        while( election.tagName != 'IMG' ){
-            election = election.children[0]
-        };
-
-        election = election.getAttribute('name');
-        
-        aiElection = Math.floor(Math.random() * (3 - 0)) + 0;
-
-        aiElection = getItem( aiElection );
-
-        setElection({
-            ...Election,
-            aiElection: aiElection,
-            userElection: election,
-        });
-
-        election = getItem( election );
-
-        aiElection = getItem( aiElection );
-
-        setItem({
-            ...Item,
-            userItem: itemsSVG[election],
-            aiItem: itemsSVG[aiElection]
-        });
-
-        winner(election, aiElection);
-    }
-
-    const handlePlayAgain = () => {
-        setIsPlaying( false );
-        setPlayAgain( false );
+        setUserInfo(x => ({
+            ...x,
+            user: {
+                ...x.user,
+                score: x.user.score + 1
+            }
+        }))
     }
 
     useEffect(() => {
-        if (Win != 'YOU WIN') return;
+        if (gameState.winnerText != 'YOU WIN') return;
 
-        fetch(`${process.env.REACT_APP_API_URL}/api/usuarios/${ user.uid }`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-token' : UserInfo?.tokenId
-            },
-            body: JSON.stringify({
-                score: UserInfo.user.score + 1
-            }),
-        })
-        .then( data => data.json() )
-        .catch( data => console.log("Error en la peticion"))
-        
-        setTimeout(() => {
-            setUserInfo({
-                ...UserInfo,
-                user: {
-                    ...user,
-                    score: score + 1
-                }
-            })
-        }, 1500);
-    }, [Win])
+        updateUserScore();
+    }, [gameState.winnerText])
 
     return (
         <>
             <NavBar />
-            <div className={`RPSContainer ${ IsPlaying ? 'Full' : '' }`}>
-                <img className={`RPSContainer__Bg ${ IsPlaying ? 'Hide' : '' }`} src={ Background } />
-                <div className={`ItemContainer Rock ${ IsPlaying ? 'Hide' : '' }`} onClick={ startGame }>
+            <div className={`RPSContainer ${ !gameState.isPlaying ? 'Full' : '' }`}>
+                <img className={`RPSContainer__Bg ${ gameState.isPlaying ? 'Hide' : '' }`} src={ Background } />
+                <div className={`ItemContainer Rock ${ gameState.isPlaying ? 'Hide' : '' }`} onClick={ handleStart }>
                     <div className="ItemBorder">
                         <div className="ItemInnerShadow">
                             <div className="ItemInnerContainer">
@@ -133,7 +66,7 @@ const GameScreen = () => {
                         </div>
                     </div>
                 </div>
-                <div className={`ItemContainer Paper ${ IsPlaying ? 'Hide' : '' }`} onClick={ startGame }>
+                <div className={`ItemContainer Paper ${ gameState.isPlaying ? 'Hide' : '' }`} onClick={ handleStart }>
                     <div className="ItemBorder">
                         <div className="ItemInnerShadow">
                             <div className="ItemInnerContainer">
@@ -142,7 +75,7 @@ const GameScreen = () => {
                         </div>
                     </div>
                 </div>
-                <div className={`ItemContainer Scissors ${ IsPlaying ? 'Hide' : '' }`} onClick={ startGame }>
+                <div className={`ItemContainer Scissors ${ gameState.isPlaying ? 'Hide' : '' }`} onClick={ handleStart }>
                     <div className="ItemBorder">
                         <div className="ItemInnerShadow">
                             <div className="ItemInnerContainer">
@@ -151,34 +84,32 @@ const GameScreen = () => {
                         </div>
                     </div>
                 </div>
-                <div className={`GameContainer ${ IsPlaying ? '' : 'Hide' }`}>
+                <div className={`GameContainer ${ (gameState.isPlaying && gameState.winnerText) ? '' : 'Hide' }`}>
                     <div className="Option">
                         <p className="OptionTitle">
                             YOU PICKED
                         </p>
-                        <div className={ `ItemContainerG ${ Election.userElection }` }>
+                        <div className={ `ItemContainerG ${ indexMap[gameState.userElectionIndex] }` }>
                             <div className="ItemBorder">
                                 <div className="ItemInnerShadow">
                                     <div className="ItemInnerContainer">
-                                        <img  className="Item-Svg" src={ Item.userItem } />
+                                        <img  className="Item-Svg" src={ gameState.userElectionImg } />
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className={`Option ${ PlayAgain ? '' : 'NoShow' }`}>
+                    <div className={`Option ${ (gameState.isPlaying && gameState.winnerText) ? '' : 'NoShow' }`}>
                         <div className="Versus">
                             <p className="OptionTitle">
                                 {
-                                    Win
+                                    gameState.winnerText
                                 }
                             </p>
                             {
-                                Win != 'YOU WIN' && (
-                                    <button className="ButtonAgain" onClick={ handlePlayAgain }>
-                                        PLAY AGAIN
-                                    </button>
-                                )
+                                <button className="ButtonAgain" onClick={ handlePlayAgain }>
+                                    PLAY AGAIN
+                                </button>
                             }
                         </div>
                     </div>
@@ -186,11 +117,11 @@ const GameScreen = () => {
                         <p className="OptionTitle">
                             THE HOUSE PICKED
                         </p>
-                        <div className={ `ItemContainerG ${ Election.aiElection }` }>
+                        <div className={ `ItemContainerG ${ indexMap[gameState.aiElectionIndex] }` }>
                             <div className="ItemBorder">
                                 <div className="ItemInnerShadow">
                                     <div className="ItemInnerContainer">
-                                        <img className="Item-Svg" src={ Item.aiItem } />
+                                        <img className="Item-Svg" src={ gameState.aiElectionImg } />
                                     </div>
                                 </div>
                             </div>

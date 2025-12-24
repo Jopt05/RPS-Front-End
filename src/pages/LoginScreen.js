@@ -30,19 +30,19 @@ const LoginScreen = () => {
             return;
         }
 
-        await handlePost({
+        const userResponse = await handlePost({
             user: form.User,
             password: form.Password,
         }, '/api/login');
 
-        if( fetchState.error ) {
+        if( !userResponse ) {
             return;
         }
 
         setUserInfo(x => ({
             ...x,
-            tokenId: fetchState.data?.tokenId,
-            user: fetchState.data?.usuario,
+            tokenId: userResponse?.tokenId,
+            user: userResponse?.usuario,
             isLogged: true,
         }))
 
